@@ -1,0 +1,29 @@
+﻿@model pim_sistema_folha.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="login-container">
+    <form asp-action="Login">
+        <div class="form-group">
+            <input asp-for="Funcionario.NomeUsuario" class="form-control" placeholder="Username"/>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Funcionario.SenhaUsuario" class="form-control" placeholder="Password" type="password" />
+        </div>
+
+        @if (Model.LoginErrorStatus == pim_sistema_folha.Models.Enums.LoginErrorStatus.UsuarioNaoEncontrado)
+        {
+            <span class="text-danger">O nome de usuário não foi encontrado.</span>
+        }
+        else if (Model.LoginErrorStatus == pim_sistema_folha.Models.Enums.LoginErrorStatus.SenhaIncorreta)
+        {
+            <span class="text-danger">Senha incorreta.</span>
+        }
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn center-block btn-danger" style="color: white; font-weight: 600;"/>
+        </div>
+    </form>
+</div>

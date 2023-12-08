@@ -1,0 +1,26 @@
+﻿@model pim_sistema_folha.Models.Funcionario
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+
+<div class="row" style="max-width: 100%">
+    <div class="col-sm-2 dados">
+        <h4>Dados do funcionário</h4>
+
+        <img src="~/images/profile.png" class="profile"/>
+
+        <p>@Model.Nome @Model.Sobrenome</p>
+        <p>@Model.DataNasc.ToShortDateString()</p>
+        <p>@Model.Cargo</p>
+        <p>CPF: @Model.Cpf</p>
+
+        <button class="btn btn-default btn-logout"><a asp-action="Logout">Sair</a></button>
+    </div>
+    <div class="col-sm-3 central">
+        <h4>Central de ações</h4>
+
+        <button class="btn-central"><a asp-action="GerarFolhaDePagamento">Gerar Folha de Pagamento</a><br /></button>
+        <button class="btn-central"><a asp-action="HistoricoDeFolhaDePagamento">Histórico de Folha de Pagamento</a></button>
+    </div>
+</div>

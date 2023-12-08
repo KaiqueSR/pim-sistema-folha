@@ -1,0 +1,207 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    min-width: 100%;
+    max-width: 100%;
+    background-color: #c3cfd9;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f7dade;
+    padding: 25px;
+}
+
+.profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.dados h4, .central h4 {
+    text-align: center;
+}
+
+.dados {
+    text-align: center;
+    padding: 15px;
+    min-height: 100vh;
+    margin-left: 15px;
+}
+
+.central {
+    min-height: 100vh;
+    background-color: #e3e8ed;
+    padding: 15px;
+    border: 1px solid #b5c0c9;
+}
+
+.btn-central-selected {
+    white-space: nowrap;
+    margin-top: 15px;
+    margin-left: 100%;
+    transform: translateX(-100%);
+    padding: 10px;
+    border: 1px solid #1aae9f;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: white;
+    color: #1aae9f;
+}
+
+.btn-central {
+    white-space: nowrap;
+    margin-top: 15px;
+    margin-left: 100%;
+    transform: translateX(-100%);
+    padding: 10px;
+    background-color: #1aae9f;
+    border: 1px solid #1aae9f;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-central a, .btn-central-selected a {
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn-central:hover {
+    transition: 0.5s;
+    text-decoration: none;
+    background-color: white;
+    color: #1aae9f;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.folha {
+    margin: 25px;
+    width: 500px;
+}
+
+.topo-folha {
+    padding: 15px;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.topo-folha h4 {
+    font-weight: bold;
+}
+
+.topo-folha p {
+    font-weight: bold;
+}
+
+.corpo-folha {
+    width: 100%;
+}
+
+.corpo-folha td, .corpo-folha th {
+    padding: 5px;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+.filtros {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.pesquisar-id {
+    margin-top: 50px;
+}
+
+.input-data {
+    padding: 5px;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    outline: none;
+}
+
+.baixo {
+    padding: 40px 15px 15px 15px;
+}
+
+.btn-folha {
+    text-align: left;
+    background: none;
+    color: black;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn-folha a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+.btn-folha-selected {
+    color: #6558f5;
+    border-left: 5px solid #6558f5;
+}
+
+.btn-logout {
+    outline: none;
+}
+
+.btn-logout a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+.form-inserir-funcionario input {
+    padding: 10px;
+    width: 200px;
+    border: 2px solid #e6e6e6;
+    outline: none;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.form-inserir-funcionario input:focus {
+    border: 2px solid #6558f5;
+}
+
+.form-inserir-funcionario input[type="submit"] {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    background-color: #6558f5;
+    color: white;
+    font-weight: bold;
+}

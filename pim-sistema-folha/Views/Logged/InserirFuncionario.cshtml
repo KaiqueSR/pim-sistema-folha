@@ -1,0 +1,44 @@
+﻿@model pim_sistema_folha.Models.AlterarViewModel
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+
+<div class="row" style="max-width: 100%">
+    <div class="col-sm-2 dados">
+        <h4>Dados do funcionário</h4>
+
+        <img src="~/images/profile.png" class="profile" />
+
+        <p>@Model.FuncionarioLogado.Nome @Model.FuncionarioLogado.Sobrenome</p>
+        <p>@Model.FuncionarioLogado.DataNasc.ToShortDateString()</p>
+        <p>@Model.FuncionarioLogado.Cargo</p>
+        <p>CPF: @Model.FuncionarioLogado.Cpf</p>
+
+        <button class="btn btn-default btn-logout"><a asp-action="Logout">Sair</a></button>
+    </div>
+    <div class="col-sm-3 central">
+        <h4>Central de ações</h4>
+
+        <button class="btn-central"><a asp-action="InserirFuncionario">Inserir Novo Funcionario</a><br /></button>
+        <button class="btn-central"><a asp-action="AlterarFuncionario">Alterar Dados do Funcionario</a></button>
+        <button class="btn-central"><a asp-action="HistoricoFolhasAdministrador">Histórico Folhas de Pag.</a></button>
+    </div>
+    <div class="col-md-6 content" style="min-height: 100vh; max-height: 100vh">
+        <h4 style="margin-top: 25px">Novo Funcionário</h4>
+
+        <form asp-action="InserirNovoFuncionario" class="form-inserir-funcionario">
+            <input asp-for="FuncionarioAlterar.Nome" placeholder="Nome" /><br />
+            <input asp-for="FuncionarioAlterar.Sobrenome" placeholder="Sobrenome" /><br />
+            <input asp-for="FuncionarioAlterar.DataNasc" placeholder="Data Nasc. (DD/MM/AAAA)" /><br />
+            <input asp-for="FuncionarioAlterar.Cpf" placeholder="CPF" /><br />
+            <input asp-for="FuncionarioAlterar.Cargo" placeholder="Cargo" /><br />
+            <input asp-for="FuncionarioAlterar.SalarioBruto" placeholder="Salário (R$)" /><br />
+            <input asp-for="FuncionarioAlterar.Telefone" placeholder="Telefone" /><br />
+            <input asp-for="FuncionarioAlterar.Email" placeholder="Email" /><br />
+            <input asp-for="FuncionarioAlterar.Endereco" placeholder="Endereço" /><br />
+
+            <input type="submit" value="Cadastrar Funcionario" />
+        </form>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@model pim_sistema_folha.Models.FuncionarioFolhasViewModel
+@{
+    ViewData["Title"] = "Gerar Folha de Pagamento";
+}
+
+
+<div class="row" style="max-width: 100%">
+    <div class="col-md-2 dados">
+        <h4>Dados do funcionário</h4>
+
+        <img src="~/images/profile.png" class="profile" />
+
+        <p>@Model.Funcionario.Nome @Model.Funcionario.Sobrenome</p>
+        <p>@Model.Funcionario.DataNasc.ToShortDateString()</p>
+        <p>@Model.Funcionario.Cargo</p>
+        <p>CPF: @Model.Funcionario.Cpf</p>
+
+        <button class="btn btn-default btn-logout"><a asp-action="Logout">Sair</a></button>
+    </div>
+    <div class="col-md-3 central">
+        <h4>Central de ações</h4>
+
+        <button class="btn-central"><a asp-action="GerarFolhaDePagamento">Gerar Folha de Pagamento</a><br /></button>
+        <button class="btn-central-selected"><a asp-action="HistoricoDeFolhaDePagamento">Histórico de Folha de Pagamento</a></button>
+    </div>
+    <div class="col-md-6 content">
+        <h3>Histórico de Folha de Pagamento</h3>
+        
+        <div class="filtros row">
+            <div class="col-md-5 text-center">
+                <form>
+                    <p style="font-weight: bold">Período específico:</p>
+                    <span class="span-input-data">De:</span><input type="date" class="input-data" /><br />
+                    <span class="span-input-data" style="margin-left: 10px">À:</span><input type="date" class="input-data" />
+                </form>
+            </div>
+
+            <div class="col-md-7">
+                <form>
+                    <input id="PesquisarId" runat="server" placeholder="Pesquisar ID da Folha" type="number" class="form-control pesquisar-id" />
+                </form>
+            </div>
+        </div>
+
+        <div class="row baixo">
+            <div class="historico col-md-6">
+                @foreach (var item in Model.FolhasPagamento)
+                {
+                    @if (item.Id == Model.FolhaPagamentoSelected.Id)
+                    {
+                        <button class="btn-folha btn-folha-selected"><a asp-route-id="@item.Id">Folha de pagamento - @item.DataEmissao.ToShortDateString()</a></button>
+                    }
+                    else
+                    {
+                        <button class="btn-folha"><a asp-route-id="@item.Id">Folha de pagamento - @item.DataEmissao.ToShortDateString()</a></button>
+                    }
+                }
+            </div>
+
+            <div class="view-folha col-md-6">
+                <div class="topo-folha">
+                    <h4>Empresa X - Holerite</h4>
+
+                    <p>@Model.Funcionario.Nome @Model.Funcionario.Sobrenome</p>
+                    <p>@Model.Funcionario.Cpf</p>
+                    <p>@Model.Funcionario.Cargo</p>
+                </div>
+
+                <table class="text-center corpo-folha">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 150px">Descrição</th>
+                            <th class="text-center">Extra</th>
+                            <th class="text-center">Desconto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.FolhaPagamentoSelected.ExtrasDescontos)
+                        {
+                            <tr>
+                                <td>@item.Descricao</td>
+                                @if (item.Valor >= 0)
+                                {
+                                    <td class="text-info">R$ @item.Valor</td>
+                                    <td></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                    <td class="text-danger">R$ @Math.Abs(item.Valor)</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td rowspan="2" style="text-align: left">Mensagem: </td>
+                            <td>Total Extras: @Model.FolhaPagamentoSelected.TotalExtra</td>
+                            <td>Total Descontos: @Math.Abs(Model.FolhaPagamentoSelected.TotalDesconto)</td>
+                        </tr>
+                        <tr>
+                            <td>Liq. A Receber</td>
+                            <td>R$ @Model.FolhaPagamentoSelected.TotalLiquido</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
